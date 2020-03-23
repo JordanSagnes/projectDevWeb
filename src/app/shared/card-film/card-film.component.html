@@ -1,0 +1,38 @@
+<div class="card-film">
+  <div class="left">
+    <img [src]="'https://image.tmdb.org/t/p/w185' + film.poster_path" alt="poster">
+    <div class="icons">
+      <button class="btn-floating btn-small waves-effect waves-light red" (click)="deleteFilmEvent()"><i class="material-icons">delete</i></button>
+      <button class="btn-floating btn-small waves-effect waves-light blue darken-4" (click)="showForm()"><i class="material-icons">edit</i></button>
+      <button class="btn-floating btn-small waves-effect waves-light yellow darken-2"
+              (click)="addFavori()"
+              *ngIf="!isFavori()"
+      >
+        <i class="material-icons">star_border</i>
+      </button>
+      <button class="btn-floating btn-small waves-effect waves-light yellow darken-2"
+              (click)="deleteFavori()"
+              *ngIf="isFavori()"
+      >
+        <i class="material-icons">star</i>
+      </button>
+    </div>
+  </div>
+  <div class="right">
+    <div class="title">
+      <span class="name">{{ film.original_title }}</span>
+      <span class="date">{{ film.release_date }}</span>
+    </div>
+    <div class="description">
+      <p>{{ film.overview }}</p>
+    </div>
+  </div>
+
+  <!--Modal edit film-->
+  <app-modal [isVisible]="formIsVisible" (hideModal)="hideForm($event)">
+    <div class="form">
+      <app-film-form (submitForm)="editFilm($event)" [film]="film" [action]="'Modifier'"></app-film-form>
+    </div>
+  </app-modal>
+
+</div>

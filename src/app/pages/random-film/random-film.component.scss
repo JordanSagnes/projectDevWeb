@@ -1,0 +1,12 @@
+#random-film {
+  .film {
+    display: flex;
+    justify-content: center;
+  }
+
+  .buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+}

@@ -1,0 +1,63 @@
+<div class="film-form">
+  <h1>{{ action }} un film</h1>
+  <form novalidate #f="ngForm">
+    <div class="input-field">
+      <input id="title"
+             name="title"
+             type="text"
+             placeholder="Titre du film"
+             class="validate"
+             required
+             minlength="2"
+             [(ngModel)]="film.original_title"
+             #title="ngModel"
+      >
+      <span class="helper-text red-text" *ngIf="title.dirty && title.errors?.required">Ce champ est requis</span>
+      <span class="helper-text red-text" *ngIf="title.dirty && title.errors?.minlength">Ce champ doit faire au moins 2 caractères</span>
+    </div>
+    <div class="input-field">
+      <input
+        id="image"
+        name="image"
+        type="text"
+        class="validate"
+        placeholder="url de l'image"
+        [(ngModel)]="film.poster_path"
+        #image="ngModel"
+        required
+      >
+      <span class="helper-text red-text" *ngIf="image.dirty && image.errors?.required">Ce champ est requis</span>
+    </div>
+    <div class="input-field">
+      <input
+        id="date"
+        name="date"
+        type="text"
+        class="validate"
+        placeholder="Date de sortie"
+        [(ngModel)]="film.release_date"
+        #date="ngModel"
+        required
+      >
+      <span class="helper-text red-text" *ngIf="date.dirty && date.errors?.required">Ce champ est requis</span>
+    </div>
+    <div class="input-field">
+      <textarea
+        id="overview"
+        name="overview"
+        placeholder="description"
+        class="materialize-textarea"
+        [(ngModel)]="film.overview"
+        #overview="ngModel"
+        required
+      ></textarea>
+      <span class="helper-text red-text" *ngIf="overview.dirty && overview.errors?.required">Ce champ est requis</span>
+    </div>
+    <div class="buttons">
+      <button type="submit"
+              class="waves-effect waves-light btn blue darken-4"
+              [disabled]="!f.valid"
+              (click)="submitFormEvent()">{{ action }}</button>
+    </div>
+  </form>
+</div>

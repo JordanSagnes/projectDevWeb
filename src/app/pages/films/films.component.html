@@ -1,0 +1,29 @@
+<div id="films">
+
+  <div class="input-field search">
+    <i class="material-icons prefix">search</i>
+    <input id="icon_prefix" type="text" placeholder="rechercher par titre" [(ngModel)]="searchTerm">
+  </div>
+
+  <div class="films">
+    <div class="film" *ngFor="let film of searchFilm()">
+      <app-card-film [film]="film" (deleteFilm)="deleteFilm($event)"></app-card-film>
+    </div>
+  </div>
+
+  <div class="no-result" *ngIf="searchFilm().length === 0">
+    <p>Aucun résultat</p>
+  </div>
+
+  <!--Modal add film-->
+  <app-modal [isVisible]="formIsVisible" (hideModal)="hideForm($event)">
+    <div class="form">
+      <app-film-form (submitForm)="addFilm($event)" [action]="'ajouter'"></app-film-form>
+    </div>
+  </app-modal>
+
+  <div class="buttons">
+    <a class="btn-floating btn-large waves-effect waves-light red" (click)="showForm()"><i class="material-icons">add</i></a>
+  </div>
+
+</div>

@@ -1,0 +1,9 @@
+<div id="random-film">
+  <div class="film" *ngIf="randomFilm !== undefined">
+    <app-card-film [film]="randomFilm" (deleteFilm)="deleteFilm($event)"></app-card-film>
+  </div>
+
+  <div class="buttons">
+    <a class="btn-floating btn-large waves-effect waves-light red" (click)="randomize()"><i class="material-icons">autorenew</i></a>
+  </div>
+</div>

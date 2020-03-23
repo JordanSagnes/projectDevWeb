@@ -1,0 +1,31 @@
+#films {
+  .search {
+    max-width: 1200px;
+    margin: 0 auto 20px auto;
+  }
+  .films {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    .film {
+      margin: 20px;
+    }
+  }
+
+  .buttons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .no-result {
+    text-align: center;
+    color: rgba(0,0,0,0.4);
+    font-size: 22px;
+  }
+
+  .form {
+    width: 500px;
+  }
+}
